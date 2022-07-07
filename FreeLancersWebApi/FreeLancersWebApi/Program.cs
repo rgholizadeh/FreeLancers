@@ -5,22 +5,10 @@ using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-//builder.Services.Configure<FreeLancersDatabaseSettings>(
-//    builder.Configuration.GetSection(nameof(FreeLancersDatabaseSettings)));
 builder.Services.Configure<FreeLancersDatabaseSettings>(
     builder.Configuration.GetSection("FreeLancersDatabaseSettings"));
 
-//builder.Services.AddSingleton<IFreeLancersDatabaseSettings>(fp => 
-//fp.GetRequiredService<IOptions<FreeLancersDatabaseSettings>>().Value);
 builder.Services.AddSingleton<FreeLancerService>();
-
-//builder.Services.AddSingleton<IMongoClient>(f =>
-//new MongoClient(builder.Configuration.GetValue<string>("FreeLancersDatabaseSettings: ConnectionString")));
-
-//builder.Services.AddScoped<IFreeLancerService, FreeLancerService>();
-
 
 builder.Services.AddControllers()
     .AddJsonOptions(
